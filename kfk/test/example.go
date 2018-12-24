@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"fsuper/kfk"
+	"github.com/onelittlecoder/golang/kfk"
 	"log"
 	"os"
 )
@@ -11,8 +11,8 @@ var (
 	logger = log.New(os.Stderr, "[srama]", log.LstdFlags)
 )
 
-func createConsumer() {
-	kfkConsumer, err := kfk.NewConsumer("111.230.149.182:9092", "hello", 0)
+func TestConsumer() {
+	kfkConsumer, err := kfk.NewConsumer("host:port", "xx", 0)
 	if err != nil {
 		panic(err)
 	}
@@ -26,9 +26,9 @@ func createConsumer() {
 		}
 	}
 }
-func createTopic() {
+func TestProducer() {
 
-	kfkProducer, err := kfk.NewProducer("111.230.149.182:9092", "hello", 0)
+	kfkProducer, err := kfk.NewProducer("host:port", "hello", 0)
 	if err != nil {
 		panic(err)
 	}
@@ -38,9 +38,4 @@ func createTopic() {
 		logger.Println("Failed to produce message: ", err)
 	}
 	logger.Printf("partition=%d, offset=%d\n", partition, offset)
-}
-
-func run() {
-	//createTopic()
-	createConsumer()
 }

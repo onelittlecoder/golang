@@ -12,7 +12,6 @@ type KfkConsumer struct {
 }
 
 func NewConsumer(address, topic string, partiton int32) (*KfkConsumer, error) {
-	//"111.230.149.182:9092"
 
 	consumer, err := sarama.NewConsumer(strings.Split(address, ","), nil)
 	if err != nil {

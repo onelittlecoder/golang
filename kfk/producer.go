@@ -12,7 +12,6 @@ type KfkProducer struct {
 }
 
 func NewProducer(address,topic string,partition int32) (*KfkProducer, error) {
-	//"111.230.149.182:9092"
 	config := sarama.NewConfig()
 	config.Producer.RequiredAcks = sarama.WaitForAll
 	config.Producer.Partitioner = sarama.NewManualPartitioner
